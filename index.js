@@ -6,11 +6,11 @@ const morgan = require('morgan')
 const app = express()
 const port = 3002
 
+app.use(express.json({limit: '10mb'}))
 app.use(cors())
 app.use(morgan('dev'))
 
 readdirSync('./Routes').map ( (r) => {
-    console.log(r)
     app.use('/api', require('./Routes/' + r))
 })
 

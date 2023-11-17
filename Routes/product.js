@@ -1,29 +1,21 @@
 const express = require('express')
 const route = express.Router()
 
-const { read } = require('../Controllers/product')
+const { read, list, create, update, remove } = require('../Controllers/product')
 
 // Get one product
 route.get('/product/:id', read)
 
 // Get more product
-route.get('/product', (req, res) => {
-    res.send('get omre product')
-})
+route.get('/product', list)
 
 // Post one product
-route.post('/product', (req, res) => {
-    res.send('post one product')
-})
+route.post('/product', create)
 
 // Put one product
-route.put('/product/:id', (req, res) => {
-    res.send('put one product')
-})  
+route.put('/product/:id', update)  
 
 // Delete one product
-route.delete('/product/:id', (req, res) => {
-    res.send('delete one product')
-})
+route.delete('/product/:id', remove)
 
 module.exports = route
